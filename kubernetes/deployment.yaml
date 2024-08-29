@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpt2-text-generator
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gpt2-text-generator
+  template:
+    metadata:
+      labels:
+        app: gpt2-text-generator
+    spec:
+      containers:
+      - name: gpt2-text-generator
+        image: gcr.io/pacific-cargo-381919/gpt2-text-generator:latest
+        ports:
+        - containerPort: 5000
